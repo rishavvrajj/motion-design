@@ -149,9 +149,9 @@
 			opacity: 0;
 		}
 
-		figure:hover figcaption {
+		/* figure:hover figcaption {
 			background: linear-gradient(180deg, rgba(21, 22, 24, 0.24) 0%, #151618 100%);
-		}
+		} */
 
 		figure:hover main,
 		figure:hover footer {
@@ -159,6 +159,73 @@
 		}
 
 		/* Air */
+		figcaption {
+			z-index: 1;
+		}
+
+		figcaption::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(180deg, rgba(21, 22, 24, 0.24) 0%, #151618 100%);
+			z-index: -1;
+			opacity: 0;
+			transition-property: opacity;
+		}
+
+		figure:hover figcaption::before {
+			opacity: 1;
+		}
+
+		figure a img {
+			scale: 1.2;
+			/* transition-property: scale; */
+		}
+
+		figure {
+			overflow: hidden;
+		}
+
+		figure:hover a img {
+			scale: 1;
+		}
+
+		figure main {
+			transform: translate3d(0, -4rem, 0);
+			transition-property: transform, opacity;
+		}
+
+		figure:hover main,
+		figure:hover footer {
+			transform: translate3d(0, 0, 0);
+		}
+
+		figure footer {
+			transform: translate3d(0, 4rem, 0);
+			transition-property: opacity, transform;
+		}
+
+		figure footer img {
+			transform: translate3d(-4rem, 0, 0) rotate(360deg);
+			opacity: 0;
+		}
+
+		figure:hover footer img {
+			transform: translate3d(0, 0, 0) rotate(0deg);
+			transition-delay: var(--def-transition-duration);
+			opacity: 1;
+		}
+
+
+		figcaption::before,
+		figure a img,
+		figure main,
+		figure footer,
+		figure footer img {
+			transition-duration: var(--def-transition-duration);
+			transition-timing-function: ease-in-out;
+		}
+
 	</style>
 </head>
 <body>
