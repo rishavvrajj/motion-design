@@ -17,7 +17,7 @@
 		/* This design is inspired by Zed Dash's project */
 		/* https://codepen.io/z-/pen/OBPJKK */
 		:root {
-			--def-transition-duration: .2s;
+			--def-transition-duration: .4s;
 
 			--color-cloudy: #5F7C9C;
 			--color-cloudy-shade: #56708c;
@@ -113,7 +113,8 @@
 		}
 
 		.sunny {
-			background: var(--color-sunny) url(images/sunny@c.png);
+			background: var(--color-sunny) url(images/sunny@c.jpg)  center / cover no-repeat;
+			inset: 0;
 		}
 
 		.sunny .readings li {
@@ -248,6 +249,58 @@
 
 
 		/* Air */
+
+		.accordion--item {
+			transition-property: flex-basis, background-size, padding;
+		}
+		
+		.accordion--item:hover:not(.opened) {
+			background-size: 32rem;
+			padding-block: 3rem;
+		}
+
+		.accordion--item:hover:not(.opened) .bottom-temp {
+			transform: translate3d(0, -1rem, 0);
+		}
+
+		.bottom-temp {
+			transition-property: transform, opacity;
+		}
+
+		.opened .bottom-temp {
+			transform: translate3d(0, 2rem, 0);
+		}
+
+		.temp,
+		.readings {
+			transition-property: opacity, transform;
+		}
+
+		.temp {
+			transform: translate3d(0, -4rem, 0);
+		}
+
+		.readings {
+			transform: translate3d(0, 4rem, 0)
+		}
+
+		.opened .temp,
+		.opened .readings {
+			transform: translate3d(0, 0, 0);
+		}
+
+		.date li:nth-child(2) {
+			transition-property: color;
+		}
+
+		.accordion--item,
+		.bottom-temp,
+		.temp,
+		.readings,
+		.date li:nth-child(2) {
+			transition-duration: var(--def-transition-duration);
+			transition-timing-function: ease-in-out;
+		}
 		/* In the video I'm using the following icons and imagery: */
 		/* - https://elements.envato.com/photo-realistic-weather-icon-set-K7MGJ3 */
 		/* - https://elements.envato.com/weather-icon-pack-3UHW3R3 */
@@ -271,8 +324,6 @@
 			<p>Explore Weather Forecasts</p>
 			<h1>New York City</h1>
 		</div>
-
-		<ul class="accordion"></ul>
 
 		<ul class="accordion">
 			<li class="accordion--item cloudy opened">
