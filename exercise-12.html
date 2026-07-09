@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,8 @@
 	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display:wght@700&display=swap"
+		rel="stylesheet">
 
 	<style>
 		:root {
@@ -160,7 +162,7 @@
 			place-content: center;
 			z-index: 99;
 			height: 0;
-			transition: height .5s cubic-bezier(.14,.65,.15,1);
+			transition: height .5s cubic-bezier(.14, .65, .15, 1);
 		}
 
 		#menu-container a {
@@ -193,17 +195,59 @@
 			color: var(--color-bg);
 		}
 
-		:root[menu-open] #nav-social li::after  {
+		:root[menu-open] #nav-social li::after {
 			background-color: var(--color-bg);
 		}
 
 		/* Air */
+		#menu-button {
+			display: flex;
+			flex-direction: column;
+			gap: 3.2px;
+			width: 2.5rem;
+			height: 2.5rem;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#menu-button span {
+			width: 25px;
+			height: 2.5px;
+			background-color: var(--color-text);
+			border-radius: 2px;
+			transition: transform .3s ease-in-out, opacity .3s ease-in-out, background-color .3s ease-in-out;
+		}
+
+
+
+		:root[menu-open] #menu-button span:nth-child(1) {
+			transform: translate3d(0, 6px, 0) rotate(45deg);
+		}
+
+		:root[menu-open] #menu-button span:nth-child(3) {
+			transform: translate3d(0, -6px, 0) rotate(-45deg);
+		}
+
+		:root[menu-open] #menu-button span:nth-child(2) {
+			transform: scaleX(0);
+			opacity: 0;
+		}
+
+		:root[menu-open] #menu-button span {
+			background-color: var(--color-bg);
+		}
 	</style>
 </head>
+
 <body>
 	<header>
 		<div class="header-side-content">
 			<!-- Air -->
+			<div class="button" id="menu-button">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
 			<!-- End Air -->
 		</div>
 
@@ -234,7 +278,8 @@
 		<section id="hero">
 			<div id="hero-content">
 				<h1>Navigate Your Dreams</h1>
-				<p>Unlock the adventure of a lifetime with personalized travel guides, tailored experiences, and unparalleled local insights.</p>
+				<p>Unlock the adventure of a lifetime with personalized travel guides, tailored experiences, and
+					unparalleled local insights.</p>
 				<button class="button primary">Start Your Journey</button>
 			</div>
 
@@ -251,4 +296,5 @@
 		})
 	</script>
 </body>
+
 </html>
